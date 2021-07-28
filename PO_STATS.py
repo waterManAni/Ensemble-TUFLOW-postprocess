@@ -1,6 +1,7 @@
 from PO_Peaks import *
 import datetime
 import sys
+from Stat_Plot import *
 
 
 
@@ -22,6 +23,7 @@ def POpostprocessdir(resultsdir):
     postprocessfolder= os.path.join (resultsdir,'_Postprocess_PO_'+datetime.datetime.now().strftime("%B%d"))
     try:
         os.mkdir(postprocessfolder)
+        os.mkdir(os.path.join(postprocessfolder,'plots'))
     except:
         print ('Postprocess Folder already exists')
     print ('Saving postprocess results to: ', postprocessfolder)
@@ -66,3 +68,5 @@ for grbyscenarios in PO_peaks.groupby ('Scenarios'):
                 
 statdf.to_csv(PO_Statsfile,index=False)
  
+clrscr()
+save_plots (PO_Statsfile, os.path.join(postprocessfolder,'plots'))
