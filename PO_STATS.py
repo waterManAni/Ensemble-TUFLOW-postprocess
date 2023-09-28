@@ -60,7 +60,7 @@ for grbyscenarios in PO_peaks.groupby ('Scenarios'):
             for grbydur in grbyfr[1].groupby ('Duration'):
                 TPStat = PO_Stat(grbydur[1])
                 try:
-                    if TPStat[7]>AppendStat[7]:
+                    if TPStat[6]>AppendStat[6]:
                         AppendStat=TPStat
                 except:
                     AppendStat=TPStat #if appendstat is empty, just get first group of stats i.e. first duration in a frequency group
